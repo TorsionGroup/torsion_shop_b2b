@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+location = lambda x: os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', x)
 from oscar.defaults import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -38,27 +39,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'django.contrib.sites',
     'django.contrib.flatpages',
-
+    'torsion_shop',
+    'torsion_b2b',
     'oscar',
-    'oscar.apps.analytics',
-    'oscar.apps.checkout',
-    'oscar.apps.address',
-    'oscar.apps.shipping',
-    'oscar.apps.catalogue',
+    'apps.analytics',
+    'apps.checkout',
+    'apps.address',
+    'apps.shipping',
+    'apps.catalogue',
     'oscar.apps.catalogue.reviews',
-    'oscar.apps.partner',
-    'oscar.apps.basket',
-    'oscar.apps.payment',
-    'oscar.apps.offer',
-    'oscar.apps.order',
-    'oscar.apps.customer',
-    'oscar.apps.search',
-    'oscar.apps.voucher',
-    'oscar.apps.wishlists',
-    'oscar.apps.dashboard',
+    'apps.partner',
+    'apps.basket',
+    'apps.payment',
+    'apps.offer',
+    'apps.order',
+    'apps.customer',
+    'apps.search',
+    'apps.voucher',
+    'apps.wishlists',
+    'apps.dashboard',
     'oscar.apps.dashboard.reports',
     'oscar.apps.dashboard.users',
     'oscar.apps.dashboard.orders',
@@ -71,8 +72,6 @@ INSTALLED_APPS = [
     'oscar.apps.dashboard.vouchers',
     'oscar.apps.dashboard.communications',
     'oscar.apps.dashboard.shipping',
-
-    # 3rd-party apps that oscar depends on
     'widget_tweaks',
     'haystack',
     'treebeard',
@@ -99,7 +98,7 @@ ROOT_URLCONF = 'torsion_b2b.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [location('templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
