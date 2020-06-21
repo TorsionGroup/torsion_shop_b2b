@@ -1,3 +1,5 @@
 [run]
-source = oscar_promotions
-omit = *migrations*
+source = oscar
+omit =
+    *migrations*
+    */oscar/test/*

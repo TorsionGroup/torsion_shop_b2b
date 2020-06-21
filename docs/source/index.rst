@@ -1,102 +1,132 @@
-.. Django Oscar API documentation master file, created by
-   sphinx-quickstart on Wed Dec 23 16:04:47 2015.
+.. image:: ../images/logos/oscar.png
+   :align: right
 
-================
-Django Oscar API
-================
-This package provides a RESTful API for `django-oscar`_, it's based on `django-rest-framework`_ and it exposes most of Oscar's functionality. You can find `the source code`_ on GitHub. If you have any questions or problems using Oscar API, please use the Github issuetracker.
+=====
+Oscar
+=====
 
-.. _`django-oscar`: https://github.com/django-oscar/django-oscar
-.. _`django-rest-framework`: http://www.django-rest-framework.org
-.. _`the source code`: https://github.com/django-oscar/django-oscar-api
+-----------------------------------
+Domain-driven e-commerce for Django
+-----------------------------------
 
+Oscar is an e-commerce framework for building domain-driven applications. It
+has flexibility baked into its core so that complicated requirements can be
+elegantly captured. You can tame a spaghetti domain without writing spaghetti
+code.
 
-Requirements:
--------------
-- Ppython 3.5 / 3.6 / 3.7
-- Oscar >= 2.0.0
-- Django 2.1 / 2.2
-- Django Rest Framework >= 3.9
+Years of e-commerce hard-earned experience informs Oscar's design.
 
-This version of Oscar API dropped support for Python 2 and Django 1.11 completely.
+Oscar is "domain-driven" in the sense that the core business objects can be
+customised to suit the domain at hand. In this way, your application can
+accurately capture the subtleties of its domain, making feature development and
+maintenance much easier.
 
-See `Travis`_ for the current tested platforms.
+Features:
 
-.. _`travis`: https://travis-ci.org/django-oscar/django-oscar-api
+* Any product type can be handled including downloadable products,
+  subscriptions, child products (e.g., a T-shirt in different sizes and colours).
 
+* Customisable products, such as T-shirts with personalised messages.
 
-.. _django-oscar-api-installation:
+* Large catalogue support - Oscar is used in production by sites with
+  more than 20 million products.
 
-Installation
-------------
-Please see the installation instructions of `Oscar`_ to install Oscar and how to create your own project. Then you can install Oscar API by simply typing:
+* Multiple fulfilment partners for the same product.
 
-.. _`Oscar`: https://django-oscar.readthedocs.io
+* A range of merchandising blocks for promoting products throughout your site.
 
-.. code-block:: bash
+* Sophisticated offers that support virtually any kind of offer you can think
+  of - multi-buys, bundles, buy X get 50% off Y etc
 
-    $ pip install django-oscar-api
+* Vouchers (built on top of the offers framework)
 
-Or you could add ``django-oscar-api`` to your project dependencies.
+* Comprehensive dashboard that replaces the Django admin completely
 
-.. note::
+* Support for complex order processing such split payment orders, multi-batch
+  shipping, order status pipelines.
 
-    If you would like to install the current development version, use this:
+* Extension libraries available for many payment gateways, including PayPal_,
+  GoCardless_, DataCash_ and more.
 
-    .. code-block:: bash
+.. _PayPal: https://github.com/django-oscar/django-oscar-paypal
+.. _GoCardless: https://github.com/django-oscar/django-oscar-gocardless
+.. _DataCash: https://github.com/django-oscar/django-oscar-datacash
 
-        $ pip install git+https://github.com/django-oscar/django-oscar-api.git
+Oscar is a good choice if your domain has non-trivial business logic.  Oscar's
+flexibility means it's straightforward to implement business rules that would be
+difficult to apply in other frameworks.
 
+Example requirements that Oscar projects already handle:
 
-Use out-of-the-box
-------------------
+* Paying for an order with multiple payment sources (e.g., using a bankcard,
+  voucher, gift card and points account).
 
-You can use the oscarapi application in an oscar ecommerce site without any customization. See for more information: :doc:`/usage/outofthebox`
+* Complex access control rules governing who can view and order what.
 
+* Supporting a hierarchy of customers, sales reps and sales directors - each
+  being able to "masquerade" as their subordinates.
 
-.. _django-oscar-sandbox:
+* Multi-lingual products and categories.
 
-Play around with the sandbox
-----------------------------
-You can also install Oscar API from source and run the sandbox site to play around a bit. Make sure to create a virtualenv first.
+* Digital products.
 
-.. code-block:: bash
+* Dynamically priced products (e.g. where the price is provided by an external
+  service).
 
-    $ mkvirtualenv oscarapi
-    $ git clone https://github.com/django-oscar/django-oscar-api.git
-    $ cd django-oscar-api
-    $ make sandbox
+Oscar is used in production in several applications to sell everything from beer
+mats to hotel beds.  The `source is on GitHub`_ - contributions are always welcome.
 
-    # run the server
-    $ python sandbox/manage.py runserver
+.. _`source is on GitHub`: https://github.com/django-oscar/django-oscar
 
-Now you can browse the API at http://localhost:8000/api. Here you can actually use the API already (a cool feature of `django-rest-framework`_) by using your browser and test which JSON formats you can send/receive.
-
-
-But I want to customise the standard serializers / views!
----------------------------------------------------------
-
-Probably you want this, because you already extended or changed Oscar's functionality by forking it's apps right? See :doc:`/usage/customizing_oscarapi` for this.
-
-
+First steps
+===========
 .. toctree::
-   :hidden:
    :maxdepth: 1
 
-   usage/outofthebox
-   usage/communicate_with_the_api
-   usage/customizing_oscarapi
-   usage/the_admin_api
-   usage/middleware
-   usage/settings
-   usage/permissions
-   usage/signals
-   changelog.rst
+   internals/sandbox
+   internals/getting_started
+   topics/key_questions
+   topics/modelling_your_catalogue
+   internals/getting_help
+   ref/glossary
 
-.. Indices and tables
-.. ==================
+Using Oscar
+===========
 
-.. * :ref:`genindex`
-.. * :ref:`modindex`
-.. * :ref:`search`
+All you need to start developing an Oscar project.
+
+.. toctree::
+   :maxdepth: 1
+
+   topics/customisation
+   topics/class_loading_explained
+   topics/prices_and_availability
+   topics/deploying
+   topics/translation
+   topics/upgrading
+   topics/fork_app
+
+Reference:
+
+.. toctree::
+   :maxdepth: 1
+
+   Core functionality </ref/core>
+   Oscar's apps </ref/apps/index>
+   howto/index
+   ref/settings
+   ref/signals
+   ref/templatetags
+
+The Oscar open-source project
+=============================
+
+Learn about the ideas behind Oscar and how you can contribute.
+
+.. toctree::
+   :maxdepth: 1
+
+   internals/design-decisions
+   releases/index
+   internals/contributing/index
 

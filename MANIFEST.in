@@ -1,3 +1,6 @@
 include *.rst
-recursive-include oscar_promotions/templates *.html
-recursive-include oscar_promotions/static *.css
+include AUTHORS
+include LICENSE
+recursive-include src/oscar/templates *.txt *.html
+recursive-include src/oscar/static *
+recursive-include src/oscar/locale *.po *.mo
