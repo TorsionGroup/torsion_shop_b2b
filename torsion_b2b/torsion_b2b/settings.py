@@ -11,12 +11,12 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-location = lambda x: os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', x)
-from oscar.defaults import *
+import datetime
+from defaults import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -27,8 +27,8 @@ SECRET_KEY = '*p#3#%0-t**fzd*=ur_nu97x)-1*#b%t&pa#2i6j)mqjsy^zrd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'decort.com.ua', 'www.decort.com.ua', 'torsion.kiev.ua',
+                 'www.torsion.kiev.ua']
 
 # Application definition
 
@@ -41,8 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
-    'torsion_shop',
-    'torsion_b2b',
+    'letsencrypt',
     'oscar',
     'apps.analytics',
     'apps.checkout',
@@ -77,6 +76,7 @@ INSTALLED_APPS = [
     'treebeard',
     'sorl.thumbnail',
     'django_tables2',
+    'creditcards',
 ]
 
 SITE_ID = 1
@@ -95,10 +95,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'torsion_b2b.urls'
 
+location = lambda x: os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', x)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [location('templates'), ],
+        'DIRS': [
+            location('templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,7 +120,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'torsion_b2b.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -144,7 +147,6 @@ AUTHENTICATION_BACKENDS = (
     'oscar.apps.customer.auth_backends.EmailBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -175,7 +177,7 @@ HAYSTACK_CONNECTIONS = {
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
@@ -183,8 +185,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+WEB_URL = '/web/'
+WEB_ROOT = os.path.join(BASE_DIR, 'web')

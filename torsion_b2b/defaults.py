@@ -5,8 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 OSCAR_SHOP_NAME = 'Torsion Group'
 OSCAR_SHOP_TAGLINE = ''
-#OSCAR_HOMEPAGE = reverse_lazy('catalogue:index')
-OSCAR_HOMEPAGE = '/'
+OSCAR_HOMEPAGE = reverse_lazy('catalogue:index')
 
 # Dynamic class loading
 OSCAR_DYNAMIC_CLASS_LOADER = 'oscar.core.loading.default_class_loader'
@@ -24,7 +23,7 @@ OSCAR_RECENTLY_VIEWED_COOKIE_SECURE = False
 OSCAR_RECENTLY_VIEWED_PRODUCTS = 20
 
 # Currency
-OSCAR_DEFAULT_CURRENCY = 'UAH'
+OSCAR_DEFAULT_CURRENCY = 'GBP'
 
 # Paths
 OSCAR_IMAGE_FOLDER = 'images/products/%Y/%m/'
@@ -70,7 +69,7 @@ OSCAR_EAGER_ALERTS = True
 
 # Registration
 OSCAR_SEND_REGISTRATION_EMAIL = True
-OSCAR_FROM_EMAIL = 'prog@torsion.kiev.ua'
+OSCAR_FROM_EMAIL = 'oscar@example.com'
 
 # Slug handling
 OSCAR_SLUG_FUNCTION = 'oscar.core.utils.default_slugifier'
