@@ -1,6 +1,10 @@
-include *.rst
-include AUTHORS
+global-exclude *.*
+
 include LICENSE
-recursive-include src/oscar/templates *.txt *.html
-recursive-include src/oscar/static *
-recursive-include src/oscar/locale *.po *.mo
+include README.rst
+include setup.py
+graft oscarapi
+prune oscarapi/tests/
+prune oscarapi/fixtures/
+include oscarapi/tests/__init__.py
+include oscarapi/tests/utils.py
