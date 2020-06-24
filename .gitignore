@@ -1,4 +1,5 @@
 .coverage
+.idea
 coverage.xml
 nosetests.xml
 oscar_commerceconnect.egg-info/
@@ -14,7 +15,5 @@ lib/
 *.egg-info/
 *.pyc
 version-django-oscar-commerce-connect.txt
-sandbox/media/
-sandbox/static/
 docs/build/
 lint.installed

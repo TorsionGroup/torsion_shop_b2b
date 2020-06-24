@@ -1,0 +1,1 @@
+default_app_config = 'apps.torsion_shop.apps.TorsionShopConfig'
