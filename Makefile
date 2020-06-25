@@ -1,54 +1,8 @@
-.PHONY: clean install sandbox test coverage docs build_release, publish_release_testpypi publish_release
+test: lint run-tests
 
-clean:
-	find . -name '*.pyc' -delete
-	find . -name '__pycache__' -delete
-	rm -Rf *.egg-info
-	rm -Rf dist/
-	rm -Rf build/
+isort:
+	isort -q -c --recursive --diff oscar_promotions tests setup.py
+	flake8
 
-install:
-	pip install -e .[dev]
-
-sandbox: install
-	python sandbox/manage.py migrate
-	python sandbox/manage.py loaddata product productcategory productattribute productclass productattributevalue category option attributeoptiongroup attributeoption stockrecord partner voucher country
-
-test:
-	python sandbox/manage.py test oscarapi --settings=sandbox.settings.block_admin_api_true
-	python sandbox/manage.py test oscarapi --settings=sandbox.settings.block_admin_api_false
-
-coverage:
-	coverage run sandbox/manage.py test oscarapi --settings=sandbox.settings.block_admin_api_true
-	coverage run sandbox/manage.py test oscarapi --settings=sandbox.settings.block_admin_api_false
-	coverage report -m
-	coverage xml -i
-
-docker-build:
-	 docker build -t oscarapi/test .
-
-docker-coverage: docker-build
-	 docker run -ti -v $(CURDIR):/opt -w /opt oscarapi/test bash -c "make install && pip install 'Django<3' && /usr/bin/make coverage"
-
-docs: install
-	pip install -r docs/requirements.txt
-	cd docs && make clean && make html
-
-build_release: clean
-	python setup.py sdist bdist_wheel
-
-publish_release_testpypi: build_release
-	twine upload --repository-url https://test.pypi.org/legacy/ dist/*
-
-publish_release: build_release
-	twine upload dist/*
-
-lint.installed:
-	pip install -e .[lint]
-	touch $@
-
-lint: lint.installed
-	flake8 oscarapi/
-
-black:
-	black --exclude "/migrations/" oscarapi/
+run-tests:
+	pytest

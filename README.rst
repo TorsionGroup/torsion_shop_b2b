@@ -1,62 +1,65 @@
-================
-Django Oscar API
-================
+=======================
+Django Oscar Promotions
+=======================
 
-This package provides a RESTful API for `django-oscar`_.
+Django Oscar Promotions is an app for Dashboard-editable promotional content
+in Oscar. It was formerly a part of Oscar core, but has now been separated into
+a standalone app.
 
-.. _`django-oscar`: https://github.com/django-oscar/django-oscar
+Installation
+~~~~~~~~~~~~
 
-.. image:: https://travis-ci.org/django-oscar/django-oscar-api.svg?branch=master
-    :target: https://travis-ci.org/django-oscar/django-oscar-api
+Install the package with ``pip install django-oscar-promotions``.
 
-.. image:: https://codecov.io/github/django-oscar/django-oscar-api/coverage.svg?branch=master
-    :alt: Coverage
-    :target: http://codecov.io/github/django-oscar/django-oscar-api?branch=master
+Add the following entries to ``INSTALLED_APPS``:
 
-.. image:: https://readthedocs.org/projects/django-oscar-api/badge/
-   :alt: Documentation Status
-   :target: https://django-oscar-api.readthedocs.io/
+.. code-block:: python
 
-.. image:: https://badge.fury.io/py/django-oscar-api.svg
-   :alt: Latest PyPi release
-   :target: https://pypi.python.org/pypi/django-oscar-api
-
-Usage
-=====
-
-To use the Oscar API application in an Oscar E-commerce site, follow these
-steps:
-
-1. Install the ``django-oscar-api`` package (``pip install django-oscar-api``).
-
-2. Add ``rest_framework`` and ``oscarapi`` to ``INSTALLED_APPS``
-
-    .. code-block:: python
-
-       INSTALLED_APPS = [
-        ...
-        'rest_framework',
-        'oscarapi',
-       ]
-
-3. Add the application's urls to your urlconf
-
-   .. code-block:: python
-
-      from django.urls import include
-
-      urlpatterns = (
-          # all the things you already have
-          path("api/", include("oscarapi.urls")),
-      )
-
-4. Apply migrations::
-
-    python manage.py migrate
+    INSTALLED_APPS = [
+        ...,
+        'oscar_promotions.apps.PromotionsConfig',
+        'oscar_promotions.dashboard.apps.PromotionsDashboardConfig',
+    ]
 
 
-See the Documentation_ for more information and the Changelog_ for release notes.
+And the following URL patterns to your project's URL configuration:
 
-.. _Documentation: https://django-oscar-api.readthedocs.io
-.. _Changelog: https://django-oscar-api.readthedocs.io/en/latest/changelog.html
+.. code-block:: python
 
+    urlpatterns = [
+        ...,
+        path("", apps.get_app_config("oscar_promotions").urls),
+        path("dashboard/promotions/", apps.get_app_config("oscar_promotions_dashboard").urls),
+    ]
+
+
+You can, if you prefer, include the dashboard URLs inside the URL configuration
+of your forked dashboard app.
+
+If you want the dashboard views to be accessible from the dashboard menu,
+add them to ``OSCAR_DASHBOARD_NAVIGATION``. The snippet below will add two
+menu items to the Content menu.
+
+.. code-block:: python
+
+    OSCAR_DASHBOARD_NAVIGATION[5]['children'] += [
+        {
+            'label': 'Content blocks',
+            'url_name': 'oscar_promotions_dashboard:promotion-list',
+        },
+        {
+            'label': 'Content blocks by page',
+            'url_name': 'oscar_promotions_dashboard:promotion-list-by-page',
+        },
+    ]
+
+Add the promotions context processor to your ``TEMPLATES`` setting:
+
+.. code-block:: python
+
+    TEMPLATES = {
+        'context_processors': [
+            ...
+            'oscar_promotions.context_processors.promotions',
+        ]
+    }

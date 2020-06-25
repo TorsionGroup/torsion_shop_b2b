@@ -1,60 +1,28 @@
 language: python
-os: linux
-dist: bionic
+sudo: false
 
-stages:
-  - lint
-  - test
-
-jobs:
-  fast_finish: true
-
+matrix:
   include:
-    - stage: lint
-      python: 3.7
-      env: "DJANGO='Django>=2.2,<3' OSCAR='django-oscar>=2.0,<2.1'"
-      script: make lint
+    - python: 3.5
+      env: TOXENV=py35-django22
+    - python: 3.6
+      env: TOXENV=py36-django22
+    - python: 3.7
+      env: TOXENV=py37-django22
 
-    - stage: test
-      python: 3.5
-      env: "DJANGO='Django>=2.1,<2.2' OSCAR='django-oscar>=2.0,<2.1'"
-      script: make coverage
-    - stage: test
-      python: 3.6
-      env: "DJANGO='Django>=2.1,<2.2' OSCAR='django-oscar>=2.0,<2.1'"
-      script: make coverage
-    - stage: test
-      python: 3.7
-      env: "DJANGO='Django>=2.1,<2.2' OSCAR='django-oscar>=2.0,<2.1'"
-      script: make coverage
-    - stage: test
-      python: 3.5
-      env: "DJANGO='Django>=2.2,<3' OSCAR='django-oscar>=2.0,<2.1'"
-      script: make coverage
-    - stage: test
-      python: 3.6
-      env: "DJANGO='Django>=2.2,<3' OSCAR='django-oscar>=2.0,<2.1'"
-      script: make coverage
-    - stage: test
-      python: 3.7
-      env: "DJANGO='Django>=2.2,<3' OSCAR='django-oscar>=2.0,<2.1'"
-      script: make coverage
+    - python: 3.6
+      env: TOXENV=lint
 
-    - stage: test
-      python: 3.7
-      env: "DJANGO='Django>=2.2,<3' OSCAR='https://github.com/django-oscar/django-oscar/archive/master.tar.gz'"
-      script: make coverage
-
-  allow_failures:
-    - env: "DJANGO='Django>=2.2,<3' OSCAR='https://github.com/django-oscar/django-oscar/archive/master.tar.gz'"
-
-before_install:
-    - pip install codecov
+branches:
+  only:
+    - master
 
 install:
-    - pip install $OSCAR $DJANGO
-    - make install
-    - pip freeze
+    - pip install tox codecov
+
+script:
+    - tox
 
 after_success:
+  - tox -e coverage-report
   - codecov
