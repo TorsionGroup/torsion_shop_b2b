@@ -81,7 +81,6 @@ INSTALLED_APPS = [
     'creditcards',
     'rest_framework',
     'oscarapi',
-    'apps.torsion_shop',
 ]
 
 SITE_ID = 1
