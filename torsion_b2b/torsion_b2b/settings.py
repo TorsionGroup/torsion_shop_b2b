@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'apps.voucher',
     'apps.wishlists',
     'apps.dashboard',
-    'apps.torsion_shop',
     'oscar.apps.dashboard.reports',
     'oscar.apps.dashboard.users',
     'oscar.apps.dashboard.orders',
