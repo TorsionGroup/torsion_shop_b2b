@@ -1,5 +1,5 @@
-from oscar.apps.dashboard import apps
+from oscar.apps.dashboard.apps import DashboardConfig as OscarDashboardConfig
 
 
-class DashboardConfig(apps.DashboardConfig):
-    name = 'tests._site.apps.dashboard'
+class DashboardConfig(OscarDashboardConfig):
+    pass

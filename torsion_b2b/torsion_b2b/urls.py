@@ -18,7 +18,10 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admins-view/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('api/', include('oscarapi.urls')),
+    path('', apps.get_app_config('oscar_promotions').urls),
+    path('dashboard/promotions/', apps.get_app_config('oscar_promotions_dashboard').urls),
     path('', include(apps.get_app_config('oscar').urls[0])),
 ]

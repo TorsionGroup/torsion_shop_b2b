@@ -1,23 +1,9 @@
----
 coverage:
-  precision: 2
-  round: down
-  range: "70...100"
-
   status:
+    patch: false
+    changes: false
     project:
       default:
-        target: auto
-        if_no_uploads: error
+        target: '92'
 
-    patch:
-      default:
-        if_no_uploads: error
-
-    changes: true
-
-fixes:
-  - "**/oscar/::src/oscar/"
-
-comment:
-  layout: "header, diff, tree"
+comment: false

@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'apps.voucher',
     'apps.wishlists',
     'apps.dashboard',
+    'apps.torsion_shop',
     'oscar.apps.dashboard.reports',
     'oscar.apps.dashboard.users',
     'oscar.apps.dashboard.orders',
@@ -71,12 +72,16 @@ INSTALLED_APPS = [
     'oscar.apps.dashboard.vouchers',
     'oscar.apps.dashboard.communications',
     'oscar.apps.dashboard.shipping',
+    'oscar_promotions',
+    'oscar_promotions.dashboard',
     'widget_tweaks',
     'haystack',
     'treebeard',
     'sorl.thumbnail',
     'django_tables2',
     'creditcards',
+    'rest_framework',
+    'oscarapi',
 ]
 
 SITE_ID = 1
