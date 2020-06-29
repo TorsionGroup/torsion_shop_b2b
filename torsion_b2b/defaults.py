@@ -206,7 +206,16 @@ OSCAR_DASHBOARD_NAVIGATION = [
         'icon': 'icon-bar-chart',
         'url_name': 'dashboard:reports-index',
     },
+    {
+        'label': 'Content blocks',
+        'url_name': 'oscar_promotions_dashboard:promotion-list',
+    },
+    {
+        'label': 'Content blocks by page',
+        'url_name': 'oscar_promotions_dashboard:promotion-list-by-page',
+    },
 ]
+
 OSCAR_DASHBOARD_DEFAULT_ACCESS_FUNCTION = 'oscar.apps.dashboard.nav.default_access_fn'  # noqa
 
 # Search facets
