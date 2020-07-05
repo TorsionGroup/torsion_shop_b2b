@@ -34,27 +34,25 @@
 
     {# Main content of page - other layout templates may override this block #}
     {% block content_wrapper %}
-        <div class="container-fluid page">
-            <div class="page_inner">
-                {% block breadcrumbs %}{% endblock %}
-                {% block header %}
-                    <div class="page-header action">
-                        <h1>{% block headertext %}{% endblock %}</h1>
-                    </div>
-                {% endblock %}
-                {% include "oscar/partials/alert_messages.html" %}
-                {% block subnavigation %}{% endblock %}
-                <div class="content">
-                    {% block subheader %}{% endblock subheader %}
 
-                    {# Div exists for AJAX updates to entire content section #}
-                    <div id="content_inner">{% block content %}{% endblock %}</div>
-                </div>
+        {% block breadcrumbs %}{% endblock %}
+        {% block header %}
+            <div class="page-header action">
+                <h1>{% block headertext %}{% endblock %}</h1>
             </div>
-        </div>
+        {% endblock %}
+        {% include "oscar/partials/alert_messages.html" %}
+        {% block subnavigation %}{% endblock %}
+
+        {% block subheader %}{% endblock subheader %}
+
+        {# Div exists for AJAX updates to entire content section #}
+        {% block content %}{% endblock %}
+
     {% endblock %}
 
     {% include "oscar/partials/footer.html" %}
+
 {% endblock %}
 
 {% block cdn_scripts %}
@@ -68,8 +66,7 @@
 {# Local scripts #}
 {% block scripts %}
     {{ block.super }}
-    <!-- Twitter Bootstrap -->
-    <script src="{% static "oscar/js/bootstrap3/bootstrap.min.js" %}"></script>
+
     <!-- Oscar -->
     <script src="{% static "oscar/js/oscar/ui.js" %}"></script>
 {% endblock %}

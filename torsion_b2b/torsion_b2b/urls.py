@@ -16,6 +16,9 @@ Including another URLconf
 from django.apps import apps
 from django.contrib import admin
 from django.urls import include, path
+from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admins-view/', admin.site.urls),
@@ -25,3 +28,11 @@ urlpatterns = [
     path('dashboard/promotions/', apps.get_app_config('oscar_promotions_dashboard').urls),
     path('', include(apps.get_app_config('oscar').urls[0])),
 ]
+
+urlpatterns += i18n_patterns(
+    path('', apps.get_app_config('oscar_promotions').urls),
+    path('', include(apps.get_app_config('oscar').urls[0])),
+)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
