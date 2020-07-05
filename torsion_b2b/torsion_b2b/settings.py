@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     'creditcards',
     'rest_framework',
     'oscarapi',
+
 ]
 
 SITE_ID = 1
