@@ -32,7 +32,9 @@
     {% endblock %}
 
     {# Additional CSS - specific to certain pages #}
-    {% block extrastyles %}{% endblock %}
+    {% block extrastyles %}
+
+    {% endblock %}
 
     {% block extrahead %}{% endblock %}
 
@@ -43,45 +45,67 @@
 
 </head>
 
-<body id="{% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}">
+<body class="template-color-1">
 <div class="main-wrapper">
     {# Main content goes in this 'layout' block #}
     {% block layout %}{% endblock %}
 
-    {# Local scripts #}
-    {% block scripts %}
-        <script src="{% static 'oscar/js/plugins/jquery-3.4.1.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/modernizr-2.8.3.min.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/popper.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/bootstrap.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/slick.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/hogan-3.0.2.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/lightgallery.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/jquery.nice-select.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/jquery-ui.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/jquery.barrating.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/jquery.counterup.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/jquery.sticky-sidebar.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/jquery.ui.touch-punch.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/scroll-top.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/theia-sticky-sidebar.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/jquery.waypoints.js' %}"></script>
-        <script src="{% static 'oscar/js/plugins/jquery.zoom.js' %}"></script>
-
-        <script src="{% static 'oscar/js/main.js' %}"></script>
-        <script src="{% static 'oscar/js/scripts.js' %}"></script>
-    {% endblock %}
-
-    {# Additional JS scripts #}
-    {% block extrascripts %}{% endblock %}
-
-    {# Block for body onload functions #}
-    <script>
-        $(function () {
-            {% block onbodyload %}{% endblock %}
-        });
-    </script>
-
 </div>
+
+{# Local scripts #}
+{% block scripts %}
+    <script src="{% static 'oscar/js/plugins/jquery-3.4.1.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/modernizr-2.8.3.min.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/popper.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/bootstrap.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/slick.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/hogan-3.0.2.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/lightgallery.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery.nice-select.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery-ui.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery.barrating.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery.counterup.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery.sticky-sidebar.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery.ui.touch-punch.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/scroll-top.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/theia-sticky-sidebar.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery.waypoints.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery.zoom.js' %}"></script>
+
+    <script src="{% static 'oscar/js/main.js' %}"></script>
+    <script src="{% static 'oscar/js/scripts.js' %}"></script>
+{% endblock %}
+
+{# Additional JS scripts #}
+{% block extrascripts %}
+    <script src="{% static 'oscar/js/plugins/jquery-3.4.1.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/modernizr-2.8.3.min.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/popper.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/bootstrap.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/slick.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/hogan-3.0.2.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/lightgallery.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery.nice-select.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery-ui.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery.barrating.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery.counterup.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery.sticky-sidebar.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery.ui.touch-punch.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/scroll-top.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/theia-sticky-sidebar.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery.waypoints.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/jquery.zoom.js' %}"></script>
+
+    <script src="{% static 'oscar/js/main.js' %}"></script>
+    <script src="{% static 'oscar/js/scripts.js' %}"></script>
+{% endblock %}
+
+{# Block for body onload functions #}
+<script>
+    $(function () {
+        {% block onbodyload %}{% endblock %}
+    });
+</script>
+
 </body>
 </html>

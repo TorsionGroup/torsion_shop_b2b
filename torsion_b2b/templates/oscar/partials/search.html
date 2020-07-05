@@ -1,8 +1,16 @@
 {% load i18n %}
+{% load static %}
 
-<form method="get" action="{% url 'search:search' %}" class="navbar-form navbar-right">
-    <div class="form-group">
+<div class="custom-search_col col-12">
+<form method="get" action="{% url 'search:search' %}" class="hm-searchbox">
+
+    <div class="hm-form_area">
         {{ search_form.q }}
     </div>
-    <input type="submit" value="{% trans "Search" %}" class="btn btn-default" />
+
+    <button class="header-search_btn" type="submit">
+    <i class="ion-ios-search-strong"><span>{% trans "Search" %}</span></i></button>
+
 </form>
+</div>
+
