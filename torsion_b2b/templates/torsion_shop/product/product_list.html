@@ -9,6 +9,7 @@
     <div class="shop-content_wrapper">
     <div class="container-fluid">
         <div class="row">
+
             <div class="col-lg-3 col-md-5 order-2 order-lg-1 order-md-1">
                 <div class="torsion-sidebar-catagories_area">
 
@@ -17,6 +18,7 @@
                         <div class="category-module_heading">
                             <h5>Categories</h5>
                         </div>
+
                         <div class="module-body">
                             {% for catalogcategory in catalogcategories %}
                                 {% if catalogcategory.enabled %}
@@ -25,7 +27,8 @@
                                         <li>
 
                                             <a class="active"
-                                               href="{{ catalogcategory.get_absolute_url }}">{{ catalogcategory.name }}<span>(18)</span></a>
+                                               href="{{ catalogcategory.get_absolute_url }}">
+                                                {{ catalogcategory.name }}<span>(18)</span></a>
                                             <ul class="module-sub-list_item">
 
                                                 <li>
@@ -101,6 +104,8 @@
                 </div>
 
             </div>
+
+
 
             <div class="col-lg-9 col-md-7 order-1 order-lg-2 order-md-2">
 

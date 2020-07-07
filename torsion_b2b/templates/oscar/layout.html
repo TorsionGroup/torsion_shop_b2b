@@ -2,11 +2,9 @@
 {% load static %}
 
 {% block styles %}
-    {% if use_less %}
-        <link rel="stylesheet/less" type="text/css" href="{% static 'oscar/less/styles.less' %}"/>
-    {% else %}
-        <link rel="stylesheet" type="text/css" href="{% static 'oscar/css/styles.css' %}"/>
-    {% endif %}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'oscar/css/style.css' %}"/>
+
 {% endblock %}
 
 {% block layout %}
@@ -18,20 +16,22 @@
                     {% include "oscar/partials/nav_accounts.html" %}
 
                     <div class="header-middle_area">
-                        <div class="container-fluid">
-                            <div class="row">
-                                {% include "oscar/partials/brand.html" %}
-                                {% include "oscar/partials/search.html" %}
-                            </div>
+                        <div class="container">
+
+                            {% include "oscar/partials/brand.html" %}
+
+                            {% include "oscar/partials/category_menu.html" %}
+
+                            {# Mini-basket wrapped in a block so some templates can now display it #}
+                            {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}
+
                         </div>
                     </div>
-
-                    {# Mini-basket wrapped in a block so some templates can now display it #}
-                    {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}
-
                 </div>
+
             </div>
         </div>
+
         {% block navigation %}
             {% include "oscar/partials/nav_primary.html" %}
         {% endblock %}

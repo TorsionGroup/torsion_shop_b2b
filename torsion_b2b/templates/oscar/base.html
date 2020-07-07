@@ -11,6 +11,7 @@
     <meta name="description" content="{% block description %}Torsion Group, Auto Parts{% endblock %}"/>
     <meta name="viewport" content="{% block viewport %}width=device-width{% endblock %}"/>
     <meta name="robots" content="NOARCHIVE,NOCACHE"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% block favicon %}
         <link rel="shortcut icon" href="{% static 'oscar/favicon.ico' %}"/>
     {% endblock %}
@@ -28,12 +29,12 @@
         <link rel="stylesheet" href="{% static 'oscar/css/plugins/lightgallery.css' %}">
         <link rel="stylesheet" href="{% static 'oscar/css/plugins/nice-select.css' %}">
 
-        <link rel="stylesheet" href="{% static 'oscar/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'oscar/css/styles.css' %}">
     {% endblock %}
 
     {# Additional CSS - specific to certain pages #}
     {% block extrastyles %}
-
+        <link rel="stylesheet" href="{% static 'oscar/css/styles.css' %}">
     {% endblock %}
 
     {% block extrahead %}{% endblock %}
@@ -54,6 +55,7 @@
 
 {# Local scripts #}
 {% block scripts %}
+    <script src="{% static 'oscar/js/plugins/bootstrap.js' %}"></script>
     <script src="{% static 'oscar/js/plugins/jquery-3.4.1.js' %}"></script>
     <script src="{% static 'oscar/js/plugins/modernizr-2.8.3.min.js' %}"></script>
     <script src="{% static 'oscar/js/plugins/popper.js' %}"></script>
@@ -78,26 +80,7 @@
 
 {# Additional JS scripts #}
 {% block extrascripts %}
-    <script src="{% static 'oscar/js/plugins/jquery-3.4.1.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/modernizr-2.8.3.min.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/popper.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/bootstrap.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/slick.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/hogan-3.0.2.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/lightgallery.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/jquery.nice-select.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/jquery-ui.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/jquery.barrating.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/jquery.counterup.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/jquery.sticky-sidebar.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/jquery.ui.touch-punch.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/scroll-top.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/theia-sticky-sidebar.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/jquery.waypoints.js' %}"></script>
-    <script src="{% static 'oscar/js/plugins/jquery.zoom.js' %}"></script>
 
-    <script src="{% static 'oscar/js/main.js' %}"></script>
-    <script src="{% static 'oscar/js/scripts.js' %}"></script>
 {% endblock %}
 
 {# Block for body onload functions #}

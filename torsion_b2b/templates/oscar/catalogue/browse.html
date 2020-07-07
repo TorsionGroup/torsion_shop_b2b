@@ -23,29 +23,38 @@
 {% block column_left %}
     {% category_tree as tree_categories %}
     {% if tree_categories %}
-        <h4>{% trans "Show results for" %}</h4>
-        <div class="side_categories">
-            <ul class="nav nav-list">
-                {% for tree_category in tree_categories %}
-                    <li>
-                        <a href="{{ tree_category.url }}">
-                            {% if tree_category.pk == category.pk %}
-                                <strong>{{ tree_category.name }}</strong>
-                            {% else %}
-                                {{ tree_category.name }}
-                            {% endif %}
-                        </a>
 
-                        {% if tree_category.has_children %}<ul>{% else %}</li>{% endif %}
-                        {% for n in tree_category.num_to_close %}
-                            </ul></li>
+        <div class="torsion-sidebar-catagories_area">
+            <div class="category-module torsion-sidebar_categories">
+                <div class="module-body">
+                    <ul class="module-list_item">
+                        {% for tree_category in tree_categories %}
+                            <li>
+                                <a href="{{ tree_category.url }}">
+                                    {% if tree_category.pk == category.pk %}
+                                        <strong>{{ tree_category.name }}</strong>
+                                    {% else %}
+                                        {{ tree_category.name }}
+                                    {% endif %}
+                                </a>
+
+                                {% if tree_category.has_children %}
+                                    <ul class="module-sub-list_item">{% else %}</li>{% endif %}
+                                {% for n in tree_category.num_to_close %}
+                                    </ul></li>
+                                {% endfor %}
+
                         {% endfor %}
-                {% endfor %}
-            </ul>
+                    </ul>
+                </div>
+            </div>
         </div>
+
     {% endif %}
+
     {% if has_facets %}
         <h4>{% trans "Refine by" %}</h4>
+
         <div class="side_categories">
             {% for field, data in facet_data.items %}
                 {% if data.results %}
@@ -53,7 +62,9 @@
                 {% endif %}
             {% endfor %}
         </div>
+
     {% endif %}
+
 {% endblock %}
 
 {% block content %}
@@ -61,16 +72,18 @@
     <form method="get" class="form-horizontal">
         {# Render other search params as hidden inputs #}
         {% for value in selected_facets %}
-            <input type="hidden" name="selected_facets" value="{{ value }}" />
+            <input type="hidden" name="selected_facets" value="{{ value }}"/>
         {% endfor %}
-        <input type="hidden" name="q" value="{{ search_form.q.value|default_if_none:"" }}" />
+        <input type="hidden" name="q" value="{{ search_form.q.value|default_if_none:"" }}"/>
 
         {% if paginator.count %}
             {% if paginator.num_pages > 1 %}
                 {% blocktrans with start=page_obj.start_index end=page_obj.end_index count num_results=paginator.count %}
-                    <strong>{{ num_results }}</strong> result - showing <strong>{{ start }}</strong> to <strong>{{ end }}</strong>.
+                    <strong>{{ num_results }}</strong> result - showing <strong>{{ start }}</strong> to
+                    <strong>{{ end }}</strong>.
                 {% plural %}
-                    <strong>{{ num_results }}</strong> results - showing <strong>{{ start }}</strong> to <strong>{{ end }}</strong>.
+                    <strong>{{ num_results }}</strong> results - showing <strong>{{ start }}</strong> to
+                    <strong>{{ end }}</strong>.
                 {% endblocktrans %}
             {% else %}
                 {% blocktrans count num_results=paginator.count %}

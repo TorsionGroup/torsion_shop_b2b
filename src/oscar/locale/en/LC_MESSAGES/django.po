@@ -6682,6 +6682,9 @@ msgstr ""
 msgid "Login or register"
 msgstr ""
 
+msgid "Login"
+msgstr ""
+
 #: templates/oscar/customer/login_registration.html:24
 #: templates/oscar/customer/login_registration.html:28
 msgid "Log In"

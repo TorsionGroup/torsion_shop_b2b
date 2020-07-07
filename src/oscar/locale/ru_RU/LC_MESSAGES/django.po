@@ -6717,6 +6717,9 @@ msgstr "Недавно Вы смотрели эти товары"
 msgid "Login or register"
 msgstr "Войти или зарегистрироваться"
 
+msgid "Login"
+msgstr "Войти"
+
 #: templates/oscar/customer/login_registration.html:24
 #: templates/oscar/customer/login_registration.html:28
 msgid "Log In"
