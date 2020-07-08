@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     'oscar.apps.dashboard.shipping',
     'oscar_promotions.apps.PromotionsConfig',
     'oscar_promotions.dashboard.apps.PromotionsDashboardConfig',
+    'bootstrap4',
     'widget_tweaks',
     'haystack',
     'treebeard',
@@ -80,11 +81,8 @@ INSTALLED_APPS = [
     'django_tables2',
     'creditcards',
     'rest_framework',
-    'oscarapi',
-    'bootstrap4',
-    'stores',
-    'stores.dashboard',
-    'oscarapicheckout',
+    'apps.oscarapi',
+    'apps.oscarapicheckout',
 
 ]
 
