@@ -82,6 +82,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'oscarapi',
     'bootstrap4',
+    'stores',
+    'stores.dashboard',
+    'oscarapicheckout',
 
 ]
 
@@ -215,3 +218,41 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 WEB_URL = '/web/'
 WEB_ROOT = os.path.join(BASE_DIR, 'web')
+
+# Needed by oscarapicheckout
+ORDER_STATUS_PENDING = 'Pending'
+ORDER_STATUS_PAYMENT_DECLINED = 'Payment Declined'
+ORDER_STATUS_AUTHORIZED = 'Authorized'
+
+# Other statuses
+ORDER_STATUS_SHIPPED = 'Shipped'
+ORDER_STATUS_CANCELED = 'Canceled'
+
+# Pipeline Config
+OSCAR_INITIAL_ORDER_STATUS = ORDER_STATUS_PENDING
+OSCARAPI_INITIAL_ORDER_STATUS = ORDER_STATUS_PENDING
+OSCAR_ORDER_STATUS_PIPELINE = {
+    ORDER_STATUS_PENDING: (ORDER_STATUS_PAYMENT_DECLINED, ORDER_STATUS_AUTHORIZED, ORDER_STATUS_CANCELED),
+    ORDER_STATUS_PAYMENT_DECLINED: (ORDER_STATUS_AUTHORIZED, ORDER_STATUS_CANCELED),
+    ORDER_STATUS_AUTHORIZED: (ORDER_STATUS_SHIPPED, ORDER_STATUS_CANCELED),
+    ORDER_STATUS_SHIPPED: (),
+    ORDER_STATUS_CANCELED: (),
+}
+
+OSCAR_INITIAL_LINE_STATUS = ORDER_STATUS_PENDING
+OSCAR_LINE_STATUS_PIPELINE = {
+    ORDER_STATUS_PENDING: (ORDER_STATUS_SHIPPED, ORDER_STATUS_CANCELED),
+    ORDER_STATUS_SHIPPED: (),
+    ORDER_STATUS_CANCELED: (),
+}
+
+API_ENABLED_PAYMENT_METHODS = [
+    {
+        'method': 'oscarapicheckout.methods.Cash',
+        'permission': 'oscarapicheckout.permissions.StaffOnly',
+    },
+    {
+        'method': 'some.other.methods.CreditCard',
+        'permission': 'oscarapicheckout.permissions.Public',
+    },
+]

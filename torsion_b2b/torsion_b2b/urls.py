@@ -19,14 +19,19 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
+from oscarapi.app import application as oscar_api
+from oscarapicheckout.app import application as oscar_api_checkout
 
 urlpatterns = [
     path('admins-view/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('api/', include(apps.get_app_config('oscarapicheckout').urls[0])), # Must be before oscar_api.urls
     path('api/', include('oscarapi.urls')),
     path('', apps.get_app_config('oscar_promotions').urls),
     path('dashboard/promotions/', apps.get_app_config('oscar_promotions_dashboard').urls),
     path('', include(apps.get_app_config('oscar').urls[0])),
+    path('dashboard/stores/', apps.get_app_config('stores_dashboard').urls),
+    path('stores/', apps.get_app_config('stores').urls),
 ]
 
 urlpatterns += i18n_patterns(
