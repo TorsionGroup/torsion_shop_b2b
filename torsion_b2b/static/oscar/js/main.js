@@ -284,7 +284,7 @@
 	/*  Uren's Scroll To Top
 /*----------------------------------------*/
 	$.scrollUp({
-		scrollText: '<i class="fa fa-angle-double-up"></i>',
+		scrollText: '<span class="iconify" data-icon="gg:chevron-double-up-o" data-inline="false" data-height="38"></span>',
 		easingType: 'linear',
 		scrollSpeed: 900
 	});

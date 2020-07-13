@@ -3,34 +3,24 @@
 {% load static %}
 {% load promotion_tags %}
 
-{% block navigation %}
-    {% include 'oscar/partials/nav_primary.html' %}
-{% endblock %}
-
-{% block header %}{% endblock %}
-
-{% block column_left %}
-{% endblock %}
-
 {% block content %}
 
-    <!-- Slider -->
     <div class="torsion-slider_area">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
 
-                    <div class="carousel slide" data-ride="carousel">
+                    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+                            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselIndicators" data-slide-to="3"></li>
+                            <li data-target="#carouselIndicators" data-slide-to="4"></li>
+                            <li data-target="#carouselIndicators" data-slide-to="5"></li>
+                            <li data-target="#carouselIndicators" data-slide-to="6"></li>
+                            <li data-target="#carouselIndicators" data-slide-to="7"></li>
+                            <li data-target="#carouselIndicators" data-slide-to="8"></li>
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -62,12 +52,12 @@
                                 <img class="d-block w-100" src="{% static 'oscar/img/slider/9.jpg' %}">
                             </div>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                        <a class="carousel-control-prev" href="#carouselIndicators" role="button"
                            data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                        <a class="carousel-control-next" href="#carouselIndicators" role="button"
                            data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
@@ -237,6 +227,5 @@
             </div>
         </div>
     </div>
-    <!-- torsion's Blog Area End Here -->
 
 {% endblock content %}

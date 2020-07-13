@@ -6,6 +6,11 @@
 
         <form method="get" action="{% url 'search:search' %}" class="hm-searchbox">
 
+            <select class="nice-select select-search-category">
+                <option value="0">{% trans "All products" %}</option>
+
+            </select>
+
             <div class="hm-form_area">
                 {{ search_form.q }}
             </div>
@@ -17,4 +22,3 @@
 
     </div>
 </div>
-

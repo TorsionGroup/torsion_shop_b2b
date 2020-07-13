@@ -1435,7 +1435,6 @@ img {
 .img-responsive,
 .thumbnail > img,
 .thumbnail a > img,
-
 .img-rounded {
     border-radius: 6px;
 }
@@ -9490,14 +9489,6 @@ a .icon-flip-vertical:before {
 
 .popover-content {
     padding: 9px 14px;
-}
-
-body {
-    background-color: #eeeeee;
-}
-
-.container-fluid {
-    max-width: 1280px;
 }
 
 .row {
@@ -20573,4 +20564,67 @@ button, .global-overlay, .quantity .cart-plus-minus > .qtybutton, .price-filter 
 .error404-area .search-error-wrapper .torsion-error_btn:hover {
     background: #999999;
     color: #ffffff !important;
+}
+
+.promotion_single .image_container {
+    min-height: 210px;
+    margin-bottom: 20px;
+}
+
+.promotion_single .image_container img {
+    max-height: 200px;
+}
+
+.sidebar .promotion_single h2 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-size: 17.5px;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.sidebar .promotion_single h2 small,
+.sidebar .promotion_single h2 .small {
+    font-weight: normal;
+    line-height: 1;
+    color: #777777;
+}
+
+.sidebar .promotion_single h2 small,
+.sidebar .promotion_single h2 .small {
+    font-size: 65%;
+}
+
+.sidebar .promotion_single h3 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+
+.sidebar .promotion_single h3 small,
+.sidebar .promotion_single h3 .small {
+    font-weight: normal;
+    line-height: 1;
+    color: #777777;
+}
+
+.sidebar .promotion_single h3 small,
+.sidebar .promotion_single h3 .small {
+    font-size: 75%;
+}
+
+.sidebar .promotion_single .row > [class*="col-"] {
+    float: none;
+    width: auto;
 }

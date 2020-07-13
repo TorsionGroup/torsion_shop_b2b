@@ -1,5 +1,6 @@
 {% extends 'oscar/base.html' %}
 {% load static %}
+{% csrf_token %}
 
 {% block styles %}
 
@@ -8,34 +9,32 @@
 {% block layout %}
 
     <header class="header-main_area bg--sapphire">
-        <div class="header-top_area d-lg-block d-none">
+
+        {% include "oscar/partials/nav_accounts.html" %}
+
+        <div class="header-middle_area">
             <div class="container-fluid">
                 <div class="row">
-                    {% include "oscar/partials/nav_accounts.html" %}
 
-                    <div class="header-middle_area">
-                        <div class="container">
+                    {% include "oscar/partials/brand.html" %}
 
-                            {% include "oscar/partials/brand.html" %}
+                    {% include "oscar/partials/category_menu.html" %}
 
-                            {% include "oscar/partials/category_menu.html" %}
+                    {% include "oscar/partials/search.html" %}
 
-                            {# Mini-basket wrapped in a block so some templates can now display it #}
-                            {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}
+                    {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}
 
-                        </div>
-                    </div>
+                    {% include "oscar/partials/nav_primary.html" %}
+
                 </div>
-
             </div>
         </div>
 
-        {% block navigation %}
-            {% include "oscar/partials/nav_primary.html" %}
-        {% endblock %}
+        {% include "oscar/partials/nav_mobile.html" %}
+
     </header>
 
-    {# Main content of page - other layout templates may override this block #}
+
     {% block content_wrapper %}
 
         {% block breadcrumbs %}{% endblock %}
@@ -55,6 +54,7 @@
     {% endblock %}
 
     {% include "oscar/partials/footer.html" %}
+
 
 {% endblock %}
 
