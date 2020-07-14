@@ -6,11 +6,11 @@ class NewsView(ListView):
     queryset = News.objects.all()
     context_object_name = 'news_list'
     paginate_by = 10
-    template_name = 'torsion_shop/news/news_list.html'
+    template_name = 'oscar/news/news_list.html'
 
 
 class NewsDetailView(DetailView):
     model = News
     slug_field = 'alias'
     context_object_name = 'news_detail'
-    template_name = 'torsion_shop/news/news_detail.html'
+    template_name = 'oscar/news/news_detail.html'

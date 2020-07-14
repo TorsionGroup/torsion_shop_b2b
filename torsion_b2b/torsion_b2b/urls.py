@@ -33,6 +33,7 @@ urlpatterns = [
     path('news/', include('apps.news.urls')),
     path('aboutus/', include('apps.aboutus.urls')),
     path('contacts/', include('apps.contacts.urls')),
+    path('dashboard/accounts/', apps.get_app_config('accounts_dashboard').urls),
 
 ]
 

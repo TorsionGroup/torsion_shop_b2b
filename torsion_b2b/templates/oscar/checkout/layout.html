@@ -4,14 +4,31 @@
 
 {% block layout %}
 
-    <header class="header container-fluid">
-        <div class="page_inner">
-            <div class="row">
-                {% include "oscar/partials/brand.html" %}
-            </div><!-- /row -->
+    <header class="header-main_area bg--sapphire">
+
+        {% include "oscar/partials/nav_accounts.html" %}
+
+        <div class="header-middle_area">
+            <div class="container-fluid">
+                <div class="row">
+
+                    {% include "oscar/partials/brand.html" %}
+
+                    {% include "oscar/partials/category_menu.html" %}
+
+                    {% include "oscar/partials/search.html" %}
+
+                    {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}
+
+                    {% include "oscar/partials/nav_primary.html" %}
+
+                </div>
+            </div>
         </div>
-        {% block checkout_nav %}{% endblock %}
-    </header><!-- /header -->
+
+        {% include "oscar/partials/nav_mobile.html" %}
+
+    </header>
 
     <div class="container-fluid page">
        <div class="page_inner">
@@ -45,4 +62,7 @@
         </div><!-- /page_inner -->
     </div>
     {% include "oscar/partials/footer_checkout.html" %}
+
+    {% include "oscar/partials/footer.html" %}
+
 {% endblock %}
