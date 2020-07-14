@@ -83,6 +83,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'apps.oscarapi',
     'apps.oscarapicheckout',
+    'apps.news',
+    'apps.contacts',
+    'apps.aboutus',
 
 ]
 

@@ -30,6 +30,9 @@ urlpatterns = [
     path('', apps.get_app_config('oscar_promotions').urls),
     path('dashboard/promotions/', apps.get_app_config('oscar_promotions_dashboard').urls),
     path('', include(apps.get_app_config('oscar').urls[0])),
+    path('news/', include('apps.news.urls')),
+    path('aboutus/', include('apps.aboutus.urls')),
+    path('contacts/', include('apps.contacts.urls')),
 
 ]
 
