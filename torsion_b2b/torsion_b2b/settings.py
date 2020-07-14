@@ -123,6 +123,7 @@ TEMPLATES = [
                 'oscar.apps.customer.notifications.context_processors.notifications',
                 'oscar.core.context_processors.metadata',
                 'oscar_promotions.context_processors.promotions',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -202,7 +203,7 @@ LANGUAGES = [
 ]
 
 LOCALE_PATHS = [
-    os.path.join(BASE_DIR, '/locale/'),
+    os.path.join(BASE_DIR, 'locale/'),
 ]
 
 # Static files (CSS, JavaScript, Images)

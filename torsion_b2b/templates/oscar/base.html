@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"ru" }}" class="{% block html_class %}no-js{% endblock %}">
 
@@ -24,6 +25,7 @@
     {# Additional CSS - specific to certain pages #}
     {% block extrastyles %}
         <link rel="stylesheet" href="{% static 'oscar/css/plugins/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'oscar/css/plugins/bootstrap-select.css' %}" media="all">
         <link rel="stylesheet" href="{% static 'oscar/css/plugins/fontawesome.css' %}">
         <link rel="stylesheet" href="{% static 'oscar/css/plugins/fontawesome-stars.css' %}">
         <link rel="stylesheet" href="{% static 'oscar/css/plugins/ion-fonts.css' %}">
@@ -62,6 +64,7 @@
 {# Additional JS scripts #}
 {% block extrascripts %}
     <script src="{% static 'oscar/js/plugins/bootstrap.js' %}"></script>
+    <script src="{% static 'oscar/js/plugins/bootstrap-select.js' %}"></script>
     <script src="{% static 'oscar/js/plugins/jquery-3.4.1.js' %}"></script>
     <script src="{% static 'oscar/js/plugins/modernizr-2.8.3.min.js' %}"></script>
     <script src="{% static 'oscar/js/plugins/popper.js' %}"></script>

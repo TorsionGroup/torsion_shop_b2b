@@ -20628,3 +20628,14 @@ button, .global-overlay, .quantity .cart-plus-minus > .qtybutton, .price-filter 
     float: none;
     width: auto;
 }
+
+#language-switcher .bootstrap-select {
+    width: 120px;
+    margin-top: 10px;
+    margin-left: 8px;
+}
+
+#language-switcher .bootstrap-select button {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}

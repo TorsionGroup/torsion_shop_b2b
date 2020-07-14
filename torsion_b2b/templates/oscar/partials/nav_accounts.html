@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load static %}
 
+
 <div class="header-top_area d-lg-block d-none">
     <div class="container-fluid">
         <div class="row">
@@ -23,7 +24,8 @@
                     <div class="ht-menu">
 
                         <ul>
-                            <li><a href="javascript:void(0)">Currency<i class="ion-ios-arrow-down"></i></a>
+                            <li><a href="javascript:void(0)">
+                                <span>$</span> <span>Currency</span><i class="ion-ios-arrow-down"></i></a>
                                 <ul class="ht-dropdown ht-currency">
                                     <li><a href="javascript:void(0)">€ EUR</a></li>
                                     <li class="active"><a href="javascript:void(0)">£ Pound Sterling</a></li>
@@ -31,25 +33,26 @@
                                 </ul>
                             </li>
 
-                            <li><a href="javascript:void(0)">Language <i class="ion-ios-arrow-down"></i></a>
-                                <ul class="ht-dropdown">
-                                    <li class="active"><a href="javascript:void(0)"><img
-                                            src="{% static 'img/torsion/menu/icon/1.jpg' %}"
-                                            alt="JB's Language Icon">English</a></li>
-                                    <li><a href="javascript:void(0)"><img
-                                            src="{% static 'img/torsion/menu/icon/2.jpg' %}"
-                                            alt="JB's Language Icon">Français</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-
                             {% block nav_account_languages %}
                                 {% if LANGUAGES|length > 1 %}
-                                    <form id="language_selector" class="ht-dropdown"
-                                          action="{% url 'set_language' %}"
-                                          method="post">
 
+                                    <li><a href="javascript:void(0)">
+                                        <span><img src="assets/images/menu/icon/1.jpg" alt=""></span>
+                                        <span>Language</span> <i class="ion-ios-arrow-down"></i></a>
+
+                                        <ul class="ht-dropdown">
+                                            <li class="active"><a href="javascript:void(0)">
+                                                <img src="{% static 'img/torsion/menu/icon/1.jpg' %}">English</a></li>
+                                            <li><a href="javascript:void(0)">
+                                                <img src="{% static 'img/torsion/menu/icon/2.jpg' %}">Français</a>
+                                            </li>
+                                        </ul>
+
+                                    </li>
+
+                                    <form id="language_selector" class="ht-dropdown"
+                                          action="{% url 'set_language' %}" method="post">
+                                        {% csrf_token %}
                                         <input name="next" type="hidden" value="{{ language_neutral_url_path }}"/>
                                         <div class="form-group">
                                             <select name="language" class="form-control">
@@ -66,10 +69,39 @@
                                         <button class="btn btn-default" type="submit"
                                                 data-loading-text="{% trans 'Submitting...' %}">{% trans "Go" %}</button>
                                     </form>
+
+
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% get_language_info_list for LANGUAGES as languages %}
+                                    {% csrf_token %}
+                                    <li>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <img src="{% static 'oscar/img/flags/{{ language.code }}.png' %}">&nbsp;
+                                        <span class="caret"></span></a>
+                                        <ul class="ht-dropdown" role="menu" id="language-list">
+                                            {% for language in languages %}
+                                                <li>
+                                                    <a href="{% url 'set_language' %}"
+                                                       data-language-code="{{ language.code }}">
+                                                        {% if language.code == LANGUAGE_CODE %}&#10003;{% else %}&nbsp;
+                                                            &nbsp;{% endif %}
+                                                        <img src="{% static 'oscar/img/flags/{{ language.code }}.png' %}">
+                                                        {{ language.name_local }}
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+
+
                                 {% endif %}
                             {% endblock %}
 
-                            <li><a href="javascript:void(0)">My Account<i class="ion-ios-arrow-down"></i></a>
+
+                            <li><a href="javascript:void(0)">
+                                <span class="ion-ios-person-outline"></span> <span>My Account</span>
+                                <i class="ion-ios-arrow-down"></i></a>
                                 <ul class="ht-dropdown">
                                     {% if user.is_authenticated %}
                                         {% block nav_account_navbar_authenticated %}

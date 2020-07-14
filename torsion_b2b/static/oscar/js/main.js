@@ -1,7 +1,7 @@
 (function ($) {
 	'use strict';
 	/*-----------------------------
-		Uren's Window When Loading
+		Torsion's Window When Loading
 ---------------------------------*/
 	$(window).on('load', function () {
 		var wind = $(window);
@@ -12,7 +12,7 @@
 		$('.loading').fadeOut(500);
 	});
 	/*----------------------------------------*/
-	/* Uren's Newsletter Popup
+	/* Torsion's Newsletter Popup
 /*----------------------------------------*/
 	setTimeout(function () {
 		$('.popup_wrapper').css({
@@ -24,7 +24,7 @@
 		});
 	}, 5000);
 	/*----------------------------------------*/
-	/*  Uren's Sticky Menu Activation
+	/*  Torsion's Sticky Menu Activation
 /*----------------------------------------*/
 	$(window).on('scroll', function () {
 		if ($(this).scrollTop() > 300) {
@@ -34,7 +34,7 @@
 		}
 	});
 	/*----------------------------------------*/
-	/*  Uren's Main Slider
+	/*  Torsion's Main Slider
 /*----------------------------------------*/
 	$('.main-slider').slick({
 		infinite: true,
@@ -75,7 +75,7 @@
 		$this.parents('.open').removeClass('open');
 	});
 	/*----------------------------------------*/
-	/*  Uren's Offcanvas
+	/*  Torsion's Offcanvas
 /*----------------------------------------*/
 	/*Variables*/
 	var $offcanvasNav = $('.offcanvas-menu, .offcanvas-minicart_menu, .offcanvas-search_menu, .mobile-menu'),
@@ -175,7 +175,7 @@
 		$('.nice-select').niceSelect();
 	});
 	/*----------------------------------------*/
-	/* Uren's Countdown
+	/* Torsion's Countdown
 /*----------------------------------------*/
 	// Check if element exists
 	$.fn.elExists = function () {
@@ -281,7 +281,7 @@
 	}
 
 	/*----------------------------------------*/
-	/*  Uren's Scroll To Top
+	/*  Torsion's Scroll To Top
 /*----------------------------------------*/
 	$.scrollUp({
 		scrollText: '<span class="iconify" data-icon="gg:chevron-double-up-o" data-inline="false" data-height="38"></span>',
@@ -341,7 +341,7 @@
 	});
 
 	/*---------------------------------------------*/
-	/*  Uren'sCounterUp
+	/*  Torsion'sCounterUp
 /*----------------------------------------------*/
 	$('.count').counterUp({
 		delay: 10,
@@ -349,7 +349,7 @@
 	});
 
 	/*----------------------------------------*/
-	/*  Uren's Product View Mode
+	/*  Torsion's Product View Mode
 /*----------------------------------------*/
 	function porductViewMode() {
 		$(window).on({
@@ -457,7 +457,7 @@
 	});
 
 	/*-------------------------------------------------*/
-	/* Uren's Sticky Sidebar
+	/* Torsion's Sticky Sidebar
 /*-------------------------------------------------*/
 	$('#sticky-sidebar').theiaStickySidebar({
 		// Settings
@@ -465,7 +465,7 @@
 	});
 
 	/*-------------------------------------------------*/
-	/* Uren's Bootstraps 4 Tooltip
+	/* Torsion's Bootstraps 4 Tooltip
 /*-------------------------------------------------*/
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip();
@@ -488,11 +488,11 @@
 		amountprice.val('$' + sliderrange.slider('values', 0) + ' - $' + sliderrange.slider('values', 1));
 	});
 	/*----------------------------------------*/
-	/*  Uren's Slick Carousel
+	/*  Torsion's Slick Carousel
  /*----------------------------------------*/
 	var $html = $('html');
 	var $body = $('body');
-	var $elementCarousel = $('.uren-slick-slider');
+	var $elementCarousel = $('.Torsion-slick-slider');
 	// Check if element exists
 	$.fn.elExists = function () {
 		return this.length > 0;
@@ -666,7 +666,7 @@
 		});
 	}
 	/*----------------------------------------*/
-	/*  Uren's Single Blog Slider
+	/*  Torsion's Single Blog Slider
 /*----------------------------------------*/
 	$('.single-blog_slider').slick({
 		infinite: true,
@@ -719,7 +719,7 @@
 		}
 	});
 	/*----------------------------------------*/
-	/*  Uren's Product Switch Color
+	/*  Torsion's Product Switch Color
  /*----------------------------------------*/
 
 	$('.color-list a').on('click', function (e) {
@@ -777,3 +777,4 @@
 	---------------------------- */
 	$('.zoom').zoom();
 })(jQuery);
+
