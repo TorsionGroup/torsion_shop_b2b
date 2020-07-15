@@ -3,7 +3,7 @@
 {% load i18n %}
 
 
-{% block content_page %}
+{% block content %}
     {% for contacts in contacts_list %}
         {% if contacts.published %}
 
@@ -72,5 +72,5 @@
 
         {% endif %}
     {% endfor %}
-{% endblock content_page %}
+{% endblock content %}
 

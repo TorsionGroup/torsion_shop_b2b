@@ -83,11 +83,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'apps.oscarapi',
     'apps.oscarapicheckout',
-    'apps.news',
-    'apps.contacts',
-    'apps.aboutus',
     'oscar_accounts.apps.AccountsConfig',
     'oscar_accounts.dashboard.apps.AccountsDashboardConfig',
+    'content',
 
 ]
 
