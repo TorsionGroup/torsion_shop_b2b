@@ -148,7 +148,7 @@ DATABASES = {
     },
     'tecdoc': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tecdoc_1q_2018',
+        'NAME': 'td3q2017',
         'USER': 'torsion_prog',
         'PASSWORD': 'sdr%7ujK',
         'HOST': 'localhost',
