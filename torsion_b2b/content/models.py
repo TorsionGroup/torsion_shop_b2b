@@ -55,3 +55,43 @@ class ContentImage(models.Model):
     class Meta:
         verbose_name = "ContentImage"
         verbose_name_plural = "ContentImages"
+
+
+class RatingStar(models.Model):
+    value = models.PositiveSmallIntegerField(default=0)
+
+    def __str__(self):
+        return f'{self.value}'
+
+    class Meta:
+        verbose_name = "RatingStar"
+        verbose_name_plural = "RatingStars"
+        ordering = ["-value"]
+
+
+class RatingContent(models.Model):
+    ip = models.CharField(max_length=50)
+    star = models.ForeignKey(RatingStar, on_delete=models.CASCADE)
+    content = models.ForeignKey(Content, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.star} - {self.content}"
+
+    class Meta:
+        verbose_name = "RatingContent"
+        verbose_name_plural = "RatingContents"
+
+
+class ReviewContent(models.Model):
+    email = models.EmailField()
+    name = models.CharField(max_length=250)
+    text = models.TextField(max_length=5000)
+    parent = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True)
+    content = models.ForeignKey(Content, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.name} - {self.content}"
+
+    class Meta:
+        verbose_name = "ReviewContent"
+        verbose_name_plural = "ReviewContents"
