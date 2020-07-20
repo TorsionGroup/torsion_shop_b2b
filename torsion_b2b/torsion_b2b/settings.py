@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'decort.com.ua', 'www.decort.com.ua',
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'letsencrypt',
+
     'oscar',
     'apps.analytics',
     'apps.checkout',
@@ -73,6 +75,12 @@ INSTALLED_APPS = [
     'oscar.apps.dashboard.shipping',
     'oscar_promotions.apps.PromotionsConfig',
     'oscar_promotions.dashboard.apps.PromotionsDashboardConfig',
+    'rest_framework',
+    'apps.oscarapi',
+    'apps.oscarapicheckout',
+    'oscar_accounts.apps.AccountsConfig',
+    'oscar_accounts.dashboard.apps.AccountsDashboardConfig',
+
     'bootstrap4',
     'widget_tweaks',
     'haystack',
@@ -80,11 +88,6 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'django_tables2',
     'creditcards',
-    'rest_framework',
-    'apps.oscarapi',
-    'apps.oscarapicheckout',
-    'oscar_accounts.apps.AccountsConfig',
-    'oscar_accounts.dashboard.apps.AccountsDashboardConfig',
     'content',
 
 ]
