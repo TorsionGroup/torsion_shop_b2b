@@ -14,21 +14,21 @@ import os
 import datetime
 from defaults import *
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*p#3#%0-t**fzd*=ur_nu97x)-1*#b%t&pa#2i6j)mqjsy^zrd'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'decort.com.ua', 'www.decort.com.ua', 'torsion.kiev.ua',
-                 'www.torsion.kiev.ua']
+# # Quick-start development settings - unsuitable for production
+# # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
+#
+# # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = '*p#3#%0-t**fzd*=ur_nu97x)-1*#b%t&pa#2i6j)mqjsy^zrd'
+#
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
+#
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'decort.com.ua', 'www.decort.com.ua', 'torsion.kiev.ua',
+#                  'www.torsion.kiev.ua']
 
 # Application definition
 
@@ -139,27 +139,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'torsion_b2b.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'torsion_shop_b2b',
-        'USER': 'torsion_prog',
-        'PASSWORD': 'sdr%7ujK',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    },
-    'tecdoc': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'td3q2017',
-        'USER': 'torsion_prog',
-        'PASSWORD': 'sdr%7ujK',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# # Database
+# # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'torsion_shop_b2b',
+#         'USER': 'torsion_prog',
+#         'PASSWORD': 'sdr%7ujK',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     },
+#     'tecdoc': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'td3q2017',
+#         'USER': 'torsion_prog',
+#         'PASSWORD': 'sdr%7ujK',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 AUTHENTICATION_BACKENDS = (
     'oscar.apps.customer.auth_backends.EmailBackend',
@@ -218,7 +218,7 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -356,3 +356,8 @@ CKEDITOR_CONFIGS = {
     }
 }
 
+
+try:
+    from .local_settings import *
+except ImportError:
+    from .prod_settings import *
