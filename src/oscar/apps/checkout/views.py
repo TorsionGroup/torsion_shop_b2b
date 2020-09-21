@@ -41,7 +41,8 @@ class IndexView(CheckoutSessionMixin, generic.FormView):
     """
     template_name = 'oscar/checkout/gateway.html'
     form_class = GatewayForm
-    success_url = reverse_lazy('checkout:shipping-address')
+    #success_url = reverse_lazy('checkout:shipping-address')
+    success_url = reverse_lazy('checkout:shipping-method')
     pre_conditions = [
         'check_basket_is_not_empty',
         'check_basket_is_valid']
@@ -122,7 +123,8 @@ class ShippingAddressView(CheckoutSessionMixin, generic.FormView):
     """
     template_name = 'oscar/checkout/shipping_address.html'
     form_class = ShippingAddressForm
-    success_url = reverse_lazy('checkout:shipping-method')
+    #success_url = reverse_lazy('checkout:shipping-method')
+    success_url = reverse_lazy('checkout:payment-method')
     pre_conditions = ['check_basket_is_not_empty',
                       'check_basket_is_valid',
                       'check_user_email_is_captured']
@@ -158,22 +160,47 @@ class ShippingAddressView(CheckoutSessionMixin, generic.FormView):
             country__is_shipping_country=True).order_by(
             '-is_default_for_shipping')
 
+    # def post(self, request, *args, **kwargs):
+    #     # Check if a shipping address was selected directly (e.g. no form was
+    #     # filled in)
+    #     if self.request.user.is_authenticated \
+    #             and 'address_id' in self.request.POST:
+    #         address = UserAddress._default_manager.get(
+    #             pk=self.request.POST['address_id'], user=self.request.user)
+    #         action = self.request.POST.get('action', None)
+    #         if action == 'ship_to':
+    #             # User has selected a previous address to ship to
+    #             self.checkout_session.ship_to_user_address(address)
+    #             return redirect(self.get_success_url())
+    #         else:
+    #             return http.HttpResponseBadRequest()
+    #     else:
+    #         return super().post(
+    #             request, *args, **kwargs)
+
     def post(self, request, *args, **kwargs):
-        # Check if a shipping address was selected directly (e.g. no form was
+        # Check if a shipping address was selected directly (eg no form was
         # filled in)
-        if self.request.user.is_authenticated \
+        if self.request.user.is_authenticated() \
                 and 'address_id' in self.request.POST:
             address = UserAddress._default_manager.get(
                 pk=self.request.POST['address_id'], user=self.request.user)
             action = self.request.POST.get('action', None)
             if action == 'ship_to':
                 # User has selected a previous address to ship to
+
+                # Получаем код способа доставки, чтобы после
+                # сброса записать его снова
+                method_code = self.checkout_session.shipping_method_code(
+                    self.request.basket)
                 self.checkout_session.ship_to_user_address(address)
+                if method_code:
+                    self.checkout_session.use_shipping_method(method_code)
                 return redirect(self.get_success_url())
             else:
                 return http.HttpResponseBadRequest()
         else:
-            return super().post(
+            return super(ShippingAddressView, self).post(
                 request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -245,9 +272,25 @@ class ShippingMethodView(CheckoutSessionMixin, generic.FormView):
                       'check_user_email_is_captured']
     success_url = reverse_lazy('checkout:payment-method')
 
+    # def post(self, request, *args, **kwargs):
+    #     self._methods = self.get_available_shipping_methods()
+    #     return super().post(request, *args, **kwargs)
+
     def post(self, request, *args, **kwargs):
-        self._methods = self.get_available_shipping_methods()
-        return super().post(request, *args, **kwargs)
+        # Need to check that this code is valid for this user
+        method_code = request.POST.get('method_code', None)
+        if not self.is_valid_shipping_method(method_code):
+            messages.error(request, _("Your submitted shipping method is not"
+                                      " permitted"))
+            return redirect('checkout:shipping-method')
+
+        # Save the code for the chosen shipping method in the session
+        # and continue to the next step.
+        self.checkout_session.use_shipping_method(method_code)
+
+        if method_code != 'self-pickup':
+            return redirect('checkout:shipping-address')
+        return self.get_success_response()
 
     def get(self, request, *args, **kwargs):
         # These pre-conditions can't easily be factored out into the normal
