@@ -7,12 +7,14 @@ __pycache__
 /node_modules/
 
 # venv
+/oscar/
 /bin/
 /lib/
 /share
 /pyvenv.cfg
 /pip-selfcheck.json
 /oscar/pyvenv.cfg
+/oscar/pyvenv.cfg_debian
 
 # Vagrant
 .vagrant
