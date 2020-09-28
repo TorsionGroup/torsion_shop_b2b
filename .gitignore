@@ -14,7 +14,6 @@ __pycache__
 /pyvenv.cfg
 /pip-selfcheck.json
 /oscar/pyvenv.cfg
-/oscar/pyvenv.cfg_debian
 
 # Vagrant
 .vagrant
